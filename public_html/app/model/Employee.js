@@ -1,0 +1,20 @@
+Ext.define('OsakaTest.model.Employee',{
+    extend: 'Ext.data.Model',
+    fields:[
+        {name:'name',type:'string'},
+        {name:'kana',type:'string'},
+        {name:'address',type:'string'},
+        {name:'gender',type:'string'},
+        {name:'birthday',type:'date'},
+        {name:'pref',type:'string'},
+        {name:'mobile_phone',type:'string'}
+    ],
+    proxy:{
+        type:'ajax',
+        url:'./php/user.php',
+        reader:{
+            root:'data',
+            type:'json'
+        }
+    }
+});
