@@ -29,7 +29,7 @@ if( isset($_GET['sort']) ) {
     $order = implode(',' ,$orders);
 }
 
-$sql = "SELECT SQL_CALC_FOUND_ROWS * FROM users ";
+$sql = "SELECT SQL_CALC_FOUND_ROWS * FROM employee ";
 if( isset($where) ){
     $sql .= " WHERE $where";
 }
@@ -40,21 +40,21 @@ if( isset($start) ) {
     $sql .= " LIMIT $start, $limit";
 }
 
-$result = mysql_query($sql, $link);
+$result = mysqli_query($link, $sql);
 
 $data = array();
-while($row = mysql_fetch_array($result, MYSQL_ASSOC)){ 
+while($row = mysqli_fetch_array($result, MYSQLI_ASSOC)){
     $data[] = $row;
 }
 
 
-$sql = "SELECT FOUND_ROWS() count";
+$sql = "SELECT FOUND_ROWS()";
 if( isset($where) ){
     $sql .= " WHERE $where";
 }
-$result = mysql_query($sql, $link);
-$row = mysql_fetch_row($result, MYSQL_ASSOC);
-$count = $row['count'];
+$result = mysqli_query($link, $sql);
+$row = mysqli_fetch_row($result);
+$count = $row[0];
 
 $ret = array(
     'data' => $data,
