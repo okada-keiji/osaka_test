@@ -44,7 +44,11 @@ Ext.define('OsakaTest.view.Entry',{
         buttons:[{
             text:'保存'
         },{
-            text:'キャンセル'
+            text:'キャンセル',
+            handler:function(button){
+                var win = button.up('window');
+                win.close();
+            }
         }]
     }]
 });
