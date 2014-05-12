@@ -15,7 +15,21 @@ Ext.define('OsakaTest.view.Grid',{
         {text:'名前',dataIndex:'name'},
         {text:'ふりがな',dataIndex:'kana'},
         {text:'メールアドレス',dataIndex:'address'},
-        {text:'性別',dataIndex:'gender'},
+        {
+            text:'性別',
+            dataIndex:'gender',
+            renderer:function(value){
+                if(value ==='0'){
+                    return '男';
+                }
+                else if(value ==='1'){
+                    return '女';
+                }
+                else{
+                    return '異常な値';
+                }
+            }
+        },
         {text:'生年月日',dataIndex:'birthday',xtype:'datecolumn',format:'Y/m/d'},
         {text:'県',dataIndex:'pref'},
         {text:'携帯電話番号',dataIndex:'mobile_phone'}
