@@ -1,9 +1,50 @@
 Ext.define('OsakaTest.view.Entry',{
     extend:'Ext.window.Window',
-    title:'Entrywindow',
+    title:'レコードの編集',
     alias:'widget.entry-window',
     autoShow:true,
-    width:400,
-    height:400,
-    modal:true
+    width:350,
+    height:300,
+    modal:true,
+    layout:'fit',
+    items:[{
+        xtype:'form',
+        defaults:{
+            margin:10
+        },
+        items:[{
+            xtype:'textfield',
+            fieldLabel:'名前',
+            anchor:'100%'
+        },{
+            xtype:'textfield',
+            fieldLabel:'ふりがな',
+            anchor:'100%'
+        },{
+            xtype:'textfield',
+            fieldLabel:'メールアドレス',
+            anchor:'100%'
+        },{
+            xtype:'textfield',
+            fieldLabel:'性別',
+            anchor:'100%'
+        },{
+            xtype:'textfield',
+            fieldLabel:'生年月日',
+            anchor:'100%'
+        },{
+            xtype:'textfield',
+            fieldLabel:'県',
+            anchor:'100%'
+        },{
+            xtype:'textfield',
+            fieldLabel:'携帯電話番号',
+            anchor:'100%'
+        }],
+        buttons:[{
+            text:'保存'
+        },{
+            text:'キャンセル'
+        }]
+    }]
 });
