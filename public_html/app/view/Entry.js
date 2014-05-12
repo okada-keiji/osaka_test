@@ -39,7 +39,7 @@ Ext.define('OsakaTest.view.Entry',{
             xtype:'textfield',
             fieldLabel:'性別',
             anchor:'100%',
-            name:'jpgender'
+            name:'gender'
         },{
             xtype:'textfield',
             fieldLabel:'生年月日',

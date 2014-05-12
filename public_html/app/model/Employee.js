@@ -5,13 +5,6 @@ Ext.define('OsakaTest.model.Employee',{
         {name:'kana',type:'string'},
         {name:'address',type:'string'},
         {name:'gender',type:'string'},
-        {
-            name:'jpgender',
-            convert:function(value,record){
-                var jpgender = record.get('gender') == "0" ? "男" : "女";
-                return jpgender;
-            }
-        },
         {name:'birthday',type:'date'},
         {name:'pref',type:'string'},
         {name:'mobile_phone',type:'string'}
