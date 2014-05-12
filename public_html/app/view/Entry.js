@@ -3,7 +3,7 @@ Ext.define('OsakaTest.view.Entry',{
     title:'レコードの編集',
     alias:'widget.entry-window',
     autoShow:true,
-    width:350,
+    width:400,
     height:300,
     modal:true,
     layout:'fit',
@@ -23,31 +23,38 @@ Ext.define('OsakaTest.view.Entry',{
         items:[{
             xtype:'textfield',
             fieldLabel:'名前',
-            anchor:'100%'
+            anchor:'100%',
+            name:'name'
         },{
             xtype:'textfield',
             fieldLabel:'ふりがな',
-            anchor:'100%'
+            anchor:'100%',
+            name:'kana'
         },{
             xtype:'textfield',
             fieldLabel:'メールアドレス',
-            anchor:'100%'
+            anchor:'100%',
+            name:'address'
         },{
             xtype:'textfield',
             fieldLabel:'性別',
-            anchor:'100%'
+            anchor:'100%',
+            name:'jpgender'
         },{
             xtype:'textfield',
             fieldLabel:'生年月日',
-            anchor:'100%'
+            anchor:'100%',
+            name:'birthday'
         },{
             xtype:'textfield',
             fieldLabel:'県',
-            anchor:'100%'
+            anchor:'100%',
+            name:'pref'
         },{
             xtype:'textfield',
             fieldLabel:'携帯電話番号',
-            anchor:'100%'
+            anchor:'100%',
+            name:'mobile_phone'
         }],
         buttons:[{
             text:'保存'
