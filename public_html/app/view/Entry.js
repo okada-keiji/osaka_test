@@ -1,0 +1,9 @@
+Ext.define('OsakaTest.view.Entry',{
+    extend:'Ext.window.Window',
+    title:'Entrywindow',
+    alias:'widget.entry-window',
+    autoShow:true,
+    width:400,
+    height:400,
+    modal:true
+});
