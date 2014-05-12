@@ -6,7 +6,7 @@ Ext.define('OsakaTest.view.Grid',{
     store:'Employees',
     listeners:{
         'itemdblclick':function(){
-            console.log('bdclick');
+            Ext.create('OsakaTest.view.Entry');
         }
     },
     columns:[
