@@ -19,5 +19,10 @@ Ext.define('OsakaTest.view.Grid',{
         {text:'生年月日',dataIndex:'birthday',xtype:'datecolumn',format:'Y/m/d'},
         {text:'県',dataIndex:'pref'},
         {text:'携帯電話番号',dataIndex:'mobile_phone'}
-    ]
+    ],
+    dockedItems: [{
+        xtype: 'pagingtoolbar',
+        store: 'Employees',
+        dock: 'bottom'
+    }]
 });
