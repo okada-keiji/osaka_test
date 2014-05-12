@@ -7,6 +7,14 @@ Ext.define('OsakaTest.view.Entry',{
     height:300,
     modal:true,
     layout:'fit',
+    config:{record:null},
+    listeners:{
+        beforeshow:function(window){
+            var record = window.getRecord();
+            //console.log (record);
+            window.down('form').loadRecord(record);
+        }
+    },
     items:[{
         xtype:'form',
         defaults:{

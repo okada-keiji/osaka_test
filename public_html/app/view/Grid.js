@@ -5,8 +5,10 @@ Ext.define('OsakaTest.view.Grid',{
     title:'名簿',
     store:'Employees',
     listeners:{
-        'itemdblclick':function(){
-            Ext.create('OsakaTest.view.Entry');
+        'itemdblclick':function(view,rec){
+            Ext.create('OsakaTest.view.Entry',{
+                record:rec
+            });
         }
     },
     columns:[
