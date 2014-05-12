@@ -12,7 +12,7 @@ Ext.define('OsakaTest.model.Employee',{
                 return jpgender;
             }
         },
-        {name:'birthday',type:'date',dataFormat:'Y/m/d'},
+        {name:'birthday',type:'date'},
         {name:'pref',type:'string'},
         {name:'mobile_phone',type:'string'}
     ],
