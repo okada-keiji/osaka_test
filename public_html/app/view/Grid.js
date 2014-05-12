@@ -1,8 +1,14 @@
 Ext.define('OsakaTest.view.Grid',{
     extend:'Ext.grid.Panel',
+    requires:['OsakaTest.view.Entry'],
     alias:'widget.osakatestgrid',
     title:'名簿',
     store:'Employees',
+    listeners:{
+        'itemdblclick':function(){
+            console.log('bdclick');
+        }
+    },
     columns:[
         {text:'名前',dataIndex:'name'},
         {text:'ふりがな',dataIndex:'kana'},
