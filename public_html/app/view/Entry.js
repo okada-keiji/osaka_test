@@ -20,7 +20,7 @@ Ext.define('OsakaTest.view.Entry',{
             margin:10
         },
         items:[{
-            xtype:'textfield',
+            xtype:'displayfield',
             fieldLabel:'ID',
             anchor:'100%',
             name:'id'
