@@ -12,12 +12,13 @@ Ext.define('OsakaTest.view.Grid',{
         }
     },
     columns:[
-        {text:'名前',dataIndex:'name'},
-        {text:'ふりがな',dataIndex:'kana'},
-        {text:'メールアドレス',dataIndex:'address'},
+        {text:'名前',dataIndex:'name',flex:1},
+        {text:'ふりがな',dataIndex:'kana',flex:1},
+        {text:'メールアドレス',dataIndex:'address',flex:1.5},
         {
             text:'性別',
             dataIndex:'gender',
+            flex:0.1,
             renderer:function(value){
                 if(value ==='0'){
                     return '男';
@@ -30,9 +31,9 @@ Ext.define('OsakaTest.view.Grid',{
                 }
             }
         },
-        {text:'生年月日',dataIndex:'birthday',xtype:'datecolumn',format:'Y/m/d'},
-        {text:'県',dataIndex:'pref'},
-        {text:'携帯電話番号',dataIndex:'mobile_phone'}
+        {text:'生年月日',dataIndex:'birthday',flex:1,xtype:'datecolumn',format:'Y/m/d'},
+        {text:'県',dataIndex:'pref',flex:1},
+        {text:'携帯電話番号',dataIndex:'mobile_phone',flex:1}
     ],
     dockedItems: [{
         xtype: 'pagingtoolbar',
