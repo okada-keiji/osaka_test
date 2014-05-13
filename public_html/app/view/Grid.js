@@ -20,10 +20,10 @@ Ext.define('OsakaTest.view.Grid',{
             dataIndex:'gender',
             flex:0.1,
             renderer:function(value){
-                if(value ==='0'){
+                if(value === 0){
                     return '男';
                 }
-                else if(value ==='1'){
+                else if(value === 1 ){
                     return '女';
                 }
                 else{
