@@ -1,23 +1,20 @@
 <?php
-require 'connect.php';
-
-$param = get_object_vars($_POST['data']);
-$ret = updateUser($param);
+$ret = updateUser($_POST);
 echo json_encode($ret);
-
 function updateUser($param) {
+    require 'connect.php';
     $fmt = "
         update employee 
         set 
-            `name` = '%s',
-            `kana` = '%s',
-            `adress` = '%s',
-            `gender` = '%s',
-            `birthday` = '%s',
-            `pref` = '%s',
-            `mobile_phone` = '%s' 
+        `name` = '%s',
+        `kana` = '%s',
+        `address` = '%s',
+        `gender` = %s,
+        `birthday` = '%s',
+        `pref` = '%s',
+        `mobile_phone` = '%s' 
         where 
-            id = %s
+        id = %s
         ";
 
     $sql = sprintf(
@@ -28,14 +25,14 @@ function updateUser($param) {
         $param["gender"],
         $param["birthday"],
         $param["pref"],
-        $param["mobile_phone"]
+        $param["mobile_phone"],
+        $param["id"]
     );
-
     mysqli_query($link, $sql);
 
     $ret = array(
         'data' => $param,
         'success' => true
     );
+    return $ret;
 }
-
