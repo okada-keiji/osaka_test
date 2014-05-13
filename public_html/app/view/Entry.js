@@ -9,10 +9,9 @@ Ext.define('OsakaTest.view.Entry',{
     layout:'fit',
     config:{record:null},
     listeners:{
-        beforeshow:function(window){
-            var record = window.getRecord();
-            //console.log (record);
-            window.down('form').loadRecord(record);
+        beforeshow:function(win){
+            var record = win.getRecord();
+            win.down('form').loadRecord(record);
         }
     },
     items:[{
@@ -36,15 +35,19 @@ Ext.define('OsakaTest.view.Entry',{
             anchor:'100%',
             name:'address'
         },{
-            xtype:'textfield',
+            xtype:'combobox',
+            store:'Genderes',
+            displayField:'jpgender',
+            valueField:'id',
             fieldLabel:'性別',
             anchor:'100%',
             name:'gender'
         },{
-            xtype:'textfield',
+            xtype:'datefield',
             fieldLabel:'生年月日',
             anchor:'100%',
-            name:'birthday'
+            name:'birthday',
+            format:'Y/m/d'
         },{
             xtype:'textfield',
             fieldLabel:'県',
