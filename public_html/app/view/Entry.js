@@ -38,7 +38,7 @@ Ext.define('OsakaTest.view.Entry',{
             xtype:'combobox',
             store:'Genderes',
             displayField:'jpgender',
-            valueField:'id',
+            valueField:'genderid',
             fieldLabel:'性別',
             anchor:'100%',
             name:'gender'

@@ -4,7 +4,7 @@ Ext.define('OsakaTest.model.Employee',{
         {name:'name',type:'string'},
         {name:'kana',type:'string'},
         {name:'address',type:'string'},
-        {name:'gender',type:'string'},
+        {name:'gender',type:'int'},
         {name:'birthday',type:'date'},
         {name:'pref',type:'string'},
         {name:'mobile_phone',type:'string'}
