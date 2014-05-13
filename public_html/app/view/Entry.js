@@ -4,7 +4,7 @@ Ext.define('OsakaTest.view.Entry',{
     alias:'widget.entry-window',
     autoShow:true,
     width:400,
-    height:300,
+    height:330,
     modal:true,
     layout:'fit',
     config:{record:null},
@@ -20,6 +20,11 @@ Ext.define('OsakaTest.view.Entry',{
             margin:10
         },
         items:[{
+            xtype:'textfield',
+            fieldLabel:'ID',
+            anchor:'100%',
+            name:'id'
+        },{
             xtype:'textfield',
             fieldLabel:'名前',
             anchor:'100%',
@@ -60,7 +65,22 @@ Ext.define('OsakaTest.view.Entry',{
             name:'mobile_phone'
         }],
         buttons:[{
-            text:'保存'
+            text:'保存',
+            handler:function(button){
+                var form = button.up('window').down('form').getForm();
+                form.updateRecord();
+                form.submit({
+                    url:'./php/update_user.php',
+                    success:function(form,action){
+                        console.log('ok');
+                        button.up('window').close();
+                    },
+                    failure:function(form,action){
+                        console.log('no');
+                        button.up('window').close();
+                    }
+                });
+            }
         },{
             text:'キャンセル',
             handler:function(button){

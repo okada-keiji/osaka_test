@@ -1,6 +1,7 @@
 Ext.define('OsakaTest.model.Employee',{
     extend: 'Ext.data.Model',
     fields:[
+        {name:'id',type:'int'},
         {name:'name',type:'string'},
         {name:'kana',type:'string'},
         {name:'address',type:'string'},

@@ -12,6 +12,7 @@ Ext.define('OsakaTest.view.Grid',{
         }
     },
     columns:[
+        {text:'ID',dataIndex:'id'},
         {text:'名前',dataIndex:'name',flex:1},
         {text:'ふりがな',dataIndex:'kana',flex:1},
         {text:'メールアドレス',dataIndex:'address',flex:1.5},
