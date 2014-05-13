@@ -1,11 +1,8 @@
 <?php
 require 'connect.php';
 
-$params = get_object_vars($_POST['data']);
-$ret = array();
-foreach ($params as $param) {
-    $ret[] = updateUser($param);
-}
+$param = get_object_vars($_POST['data']);
+$ret = updateUser($param);
 echo json_encode($ret);
 
 function updateUser($param) {
@@ -13,25 +10,28 @@ function updateUser($param) {
         update employee 
         set 
             `name` = '%s',
-            `department_id` = '%s',
-            `email` = '%s',
+            `kana` = '%s',
+            `adress` = '%s',
             `gender` = '%s',
-            `age` = %s
+            `birthday` = '%s',
+            `pref` = '%s',
+            `mobile_phone` = '%s' 
         where 
             id = %s
         ";
 
     $sql = sprintf(
         $fmt, 
-        $param->name,
-        $param->department_id,
-        $param->email,
-        $param->gender,
-        $param->age,
-        $param->id
+        $param["name"],
+        $param["kana"],
+        $param["address"],
+        $param["gender"],
+        $param["birthday"],
+        $param["pref"],
+        $param["mobile_phone"]
     );
 
-    mysql_query($sql, $link);
+    mysqli_query($link, $sql);
 
     $ret = array(
         'data' => $param,
