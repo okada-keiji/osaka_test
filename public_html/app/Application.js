@@ -12,7 +12,8 @@ Ext.define('OsakaTest.Application', {
     ],
 
     stores: [
-        'Employees'
+        'Employees',
+        'Genderes'
         // TODO: add stores here
     ]
 });
