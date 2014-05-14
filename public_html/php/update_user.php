@@ -1,5 +1,14 @@
 <?php
-$ret = updateUser($_POST);
+if (isset($_POST['data'])) {
+    $data = json_decode($_POST['data']);
+    $ret = array();
+    foreach ($data as $record) {
+        $param = get_object_vars($record);
+        $ret[] = updateUser($param);
+    }
+} else {
+    $ret = updateUser($_POST);
+}
 echo json_encode($ret);
 function updateUser($param) {
     require 'connect.php';
