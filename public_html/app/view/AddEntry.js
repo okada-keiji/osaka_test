@@ -9,59 +9,51 @@ Ext.define('OsakaTest.view.AddEntry',{
     items:[{
         xtype:'form',
         defaults:{
-            margin:10
+            margin:10,
+            allowBrank:false,
+            anchor:'100%'
         },
         items:[{
             xtype:'textfield',
             fieldLabel:'名前',
-            anchor:'100%',
-            name:'name',
-            allowBlank:false
+            name:'name'
         },{
             xtype:'textfield',
             fieldLabel:'ふりがな',
-            anchor:'100%',
-            name:'kana',
-            allowBlank:false
+            name:'kana'
 
         },{
             xtype:'textfield',
             fieldLabel:'メールアドレス',
-            anchor:'100%',
             name:'address',
-            allowBlank:false
-
+            vtype:'email'
         },{
             xtype:'combobox',
             store:'Genderes',
             displayField:'jpgender',
             valueField:'genderid',
             fieldLabel:'性別',
-            anchor:'100%',
             name:'gender',
-            allowBlank:false
+            editable:false
 
         },{
             xtype:'datefield',
             fieldLabel:'生年月日',
-            anchor:'100%',
             name:'birthday',
             format:'Y/m/d',
-            allowBlank:false
-
+            editable:false
         },{
-            xtype:'textfield',
+            xtype:'combobox',
+            store:'Prefes',
+            displayField:'prefname',
+            valueField:'prefname',
             fieldLabel:'県',
-            anchor:'100%',
             name:'pref',
-            allowBlank:false
-
+            editable:false
         },{
             xtype:'textfield',
             fieldLabel:'携帯電話番号',
-            anchor:'100%',
-            name:'mobile_phone',
-            allowBlank:false
+            name:'mobile_phone'
 
         }],
         buttons:[{
