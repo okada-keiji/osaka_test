@@ -70,7 +70,21 @@ Ext.define('OsakaTest.view.AddEntry',{
 
         }],
         buttons:[{
-            text:'追加'
+            text:'追加',
+            handler:function(button){
+                var form = button.up('window').down('form').getForm();
+                form.submit({
+                    url:'./php/create_user.php',
+                    success:function(form,action){
+                        button.up('window').close();
+                    },
+                    failure:function(form,action){
+                        console.log('更新に失敗しました。');
+                        button.up('window').close();
+                    }
+                });
+
+            }
         },{
             text:'キャンセル',
             handler:function(button){
