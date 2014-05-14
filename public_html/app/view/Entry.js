@@ -20,7 +20,7 @@ Ext.define('OsakaTest.view.Entry',{
             margin:10
         },
         items:[{
-            xtype:'displayfield',
+            xtype:'textfield',
             fieldLabel:'ID',
             anchor:'100%',
             name:'id'
@@ -28,17 +28,22 @@ Ext.define('OsakaTest.view.Entry',{
             xtype:'textfield',
             fieldLabel:'名前',
             anchor:'100%',
-            name:'name'
+            name:'name',
+            allowBlank:false
         },{
             xtype:'textfield',
             fieldLabel:'ふりがな',
             anchor:'100%',
-            name:'kana'
+            name:'kana',
+            allowBlank:false
+
         },{
             xtype:'textfield',
             fieldLabel:'メールアドレス',
             anchor:'100%',
-            name:'address'
+            name:'address',
+            allowBlank:false
+
         },{
             xtype:'combobox',
             store:'Genderes',
@@ -46,37 +51,46 @@ Ext.define('OsakaTest.view.Entry',{
             valueField:'genderid',
             fieldLabel:'性別',
             anchor:'100%',
-            name:'gender'
+            name:'gender',
+            allowBlank:false
+
         },{
             xtype:'datefield',
             fieldLabel:'生年月日',
             anchor:'100%',
             name:'birthday',
-            format:'Y/m/d'
+            format:'Y/m/d',
+            allowBlank:false
+
         },{
             xtype:'textfield',
             fieldLabel:'県',
             anchor:'100%',
-            name:'pref'
+            name:'pref',
+            allowBlank:false
+
         },{
             xtype:'textfield',
             fieldLabel:'携帯電話番号',
             anchor:'100%',
-            name:'mobile_phone'
+            name:'mobile_phone',
+            allowBlank:false
+
         }],
         buttons:[{
             text:'保存',
+            formBind:true,
+            disabled:true,
             handler:function(button){
                 var form = button.up('window').down('form').getForm();
                 form.updateRecord();
                 form.submit({
                     url:'./php/update_user.php',
                     success:function(form,action){
-                        console.log('ok');
                         button.up('window').close();
                     },
                     failure:function(form,action){
-                        console.log('no');
+                        console.log('更新に失敗しました。');
                         button.up('window').close();
                     }
                 });
