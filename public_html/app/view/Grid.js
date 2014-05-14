@@ -36,9 +36,11 @@ Ext.define('OsakaTest.view.Grid',{
         {text:'県',dataIndex:'pref',flex:1},
         {text:'携帯電話番号',dataIndex:'mobile_phone',flex:1}
     ],
-    dockedItems: [{
+    tbar:[{
+        text:'追加',
+    }],
+    bbar: [{
         xtype: 'pagingtoolbar',
         store: 'Employees',
-        dock: 'bottom'
     }]
 });
