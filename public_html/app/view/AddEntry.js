@@ -13,11 +13,6 @@ Ext.define('OsakaTest.view.AddEntry',{
         },
         items:[{
             xtype:'textfield',
-            fieldLabel:'ID',
-            anchor:'100%',
-            name:'id'
-        },{
-            xtype:'textfield',
             fieldLabel:'名前',
             anchor:'100%',
             name:'name',
@@ -71,6 +66,7 @@ Ext.define('OsakaTest.view.AddEntry',{
         }],
         buttons:[{
             text:'追加',
+            formBind:true,
             handler:function(button){
                 var form = button.up('window').down('form').getForm();
                 form.submit({
