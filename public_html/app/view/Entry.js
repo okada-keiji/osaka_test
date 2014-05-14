@@ -78,6 +78,22 @@ Ext.define('OsakaTest.view.Entry',{
 
         }],
         buttons:[{
+            text:'削除',
+            handler:function(button){
+                var form = button.up('window').down('form').getForm();
+                form.updateRecord();
+                form.submit({
+                    url:'./php/delete_user.php',
+                    success:function(form,action){
+                        button.up('window').close();
+                    },
+                    failure:function(form,action){
+                        console.log('削除に失敗しました。');
+                        button.up('window').close();
+                    }
+                });
+            }
+        },'->',{
             text:'保存',
             formBind:true,
             disabled:true,
