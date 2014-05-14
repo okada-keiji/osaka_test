@@ -1,6 +1,6 @@
 Ext.define('OsakaTest.view.Grid',{
     extend:'Ext.grid.Panel',
-    requires:['OsakaTest.view.Entry'],
+    requires:['OsakaTest.view.Entry','OsakaTest.view.AddEntry'],
     alias:'widget.osakatestgrid',
     title:'名簿',
     store:'Employees',
@@ -38,6 +38,9 @@ Ext.define('OsakaTest.view.Grid',{
     ],
     tbar:[{
         text:'追加',
+        handler:function(){
+            Ext.create('OsakaTest.view.AddEntry');
+        }
     }],
     bbar: [{
         xtype: 'pagingtoolbar',
