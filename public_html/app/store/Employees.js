@@ -3,5 +3,6 @@ Ext.define('OsakaTest.store.Employees',{
     model:'OsakaTest.model.Employee',
     remoteSort:true,
     autoLoad:true,
-    pagesize:25
+    pagesize:25,
+    autoSync:true
 });
