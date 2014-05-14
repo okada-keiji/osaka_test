@@ -73,17 +73,23 @@ Ext.define('OsakaTest.view.Entry',{
         }],
         buttons:[{
             text:'削除',
+            itemId:'delete',
             handler:function(button){
-                var form = button.up('window').down('form').getForm();
-                form.updateRecord();
-                form.submit({
-                    url:'./php/delete_user.php',
-                    success:function(form,action){
-                        button.up('window').close();
-                    },
-                    failure:function(form,action){
-                        console.log('削除に失敗しました。');
-                        button.up('window').close();
+                Ext.Msg.confirm('削除確認','このレコードを削除してもよろしいですか？',function(res,text){
+                    if(res === 'yes'){
+                        var form = button.up('window').down('form').getForm();
+                        form.updateRecord();
+                        form.submit({
+                            url:'./php/delete_user.php',
+                            success:function(form,action){
+                                button.up('window').close();
+                            },
+                            failure:function(form,action){
+                                console.log('削除に失敗しました。');
+                                button.up('window').close();
+                            }
+                        });
+
                     }
                 });
             }
