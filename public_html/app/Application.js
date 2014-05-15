@@ -8,6 +8,7 @@ Ext.define('OsakaTest.Application', {
     ],
 
     controllers: [
+        'Grid'
         // TODO: add controllers here
     ],
 

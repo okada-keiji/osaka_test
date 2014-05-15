@@ -1,14 +1,14 @@
 Ext.define('OsakaTest.view.Grid',{
     extend:'Ext.grid.Panel',
     requires:['OsakaTest.view.Entry','OsakaTest.view.AddEntry'],
-    alias:'widget.osakatestgrid',
+    alias:'widget.osakatest-grid',
     title:'名簿',
     store:'Employees',
     listeners:{
         'itemdblclick':function(view,rec){
             Ext.create('OsakaTest.view.Entry',{
                 record:rec
-            });
+            })
         }
     },
     columns:[
@@ -21,15 +21,10 @@ Ext.define('OsakaTest.view.Grid',{
             dataIndex:'gender',
             flex:0.1,
             renderer:function(value){
-                if(value === 0){
-                    return '男';
-                }
-                else if(value === 1 ){
-                    return '女';
-                }
-                else{
-                    return '異常な値';
-                }
+                var store = Ext.getStore('Genderes'),
+                    rec = store.findRecord('genderid', value, 0,false,false, true);
+
+                return rec.get('jpgender');
             }
         },
         {text:'生年月日',dataIndex:'birthday',flex:1,xtype:'datecolumn',format:'Y/m/d'},
@@ -38,12 +33,10 @@ Ext.define('OsakaTest.view.Grid',{
     ],
     tbar:[{
         text:'追加',
-        handler:function(){
-            Ext.create('OsakaTest.view.AddEntry');
-        }
+        itemId: 'addButton'
     }],
     bbar: [{
         xtype: 'pagingtoolbar',
-        store: 'Employees',
+        store: 'Employees'
     }]
 });
