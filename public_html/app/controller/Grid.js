@@ -42,6 +42,7 @@ Ext.define('OsakaTest.controller.Grid', {
                 form.submit({
                     url:'./php/delete_user.php',
                     success:function(form,action){
+                        var store = Ext.getStore('Employees').reload();
                         win.close();
                     },
                     failure:function(form,action){
@@ -59,6 +60,7 @@ Ext.define('OsakaTest.controller.Grid', {
         form.submit({
             url:'./php/update_user.php',
             success:function(form,action){
+                var store = Ext.getStore('Employees').reload();
                 win.close();
             },
             failure:function(form,action){
