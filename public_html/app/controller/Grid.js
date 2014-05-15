@@ -52,18 +52,34 @@ Ext.define('OsakaTest.controller.Grid', {
     },
     onEditEmployee: function(win){
         var form = win.down('#entryform');
-        form.updateRecord();
-        form.submit({
-            url:'./php/update_user.php',
-            success:function(form,action){
-                var store = Ext.getStore('Employees').reload();
-                win.close();
-            },
-            failure:function(form,action){
-                console.log('更新に失敗しました。');
-                win.close();
-            }
-        });
+        if(win.getRecord()===null){
+            form.submit({
+                url:'./php/create_user.php',
+                success:function(form,action){
+                    var store = Ext.getStore('Employees').reload();
+                    win.close();
+                },
+                failure:function(form,action){
+                    console.log('追加に失敗しました。');
+                    win.close();
+                }
+            });
+        }
+        else{
+            form.updateRecord();
+            form.submit({
+                url:'./php/update_user.php',
+                success:function(form,action){
+                    var store = Ext.getStore('Employees').reload();
+                    win.close();
+                },
+                failure:function(form,action){
+                    console.log('更新に失敗しました。');
+                    win.close();
+                }
+            });
+        }
+
 
     },
     onCancelEditEmployee:function(win){
