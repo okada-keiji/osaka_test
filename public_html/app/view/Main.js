@@ -10,6 +10,6 @@ Ext.define('OsakaTest.view.Main', {
     },
 
     items: [{
-        xtype: 'osakatestgrid',
+        xtype: 'osakatest-grid',
     }]
 });
