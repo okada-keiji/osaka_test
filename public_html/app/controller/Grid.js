@@ -36,6 +36,7 @@ Ext.define('OsakaTest.controller.Grid', {
         win.down('#entryform').loadRecord(record);
     },
     onDeleteEmployee: function(win){
+        var form = win.down('#entryform');
         Ext.Msg.confirm('削除確認','このレコードを削除してもよろしいですか？',function(res,text){
             if(res === 'yes'){
                 form.updateRecord();
