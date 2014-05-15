@@ -13,8 +13,11 @@ Ext.define('OsakaTest.controller.Grid', {
             'osakatest-grid button#addButton': {
                 'click': me.onAddButton
             },
+            'osakatest-grid':{
+                'itemdblclick': me.createWindow
+            },
             'osakatest-entry-window':{
-                'beforerender':me.showEntryWindow
+                'beforerender':me.loadRecordForm
             }
         });
     },
@@ -22,7 +25,12 @@ Ext.define('OsakaTest.controller.Grid', {
     onAddButton: function(button) {
         Ext.create('OsakaText.view.AddEntry');
     },
-    showEntryWindow: function(win){
+    createWindow:function(view,rec){
+        Ext.create('OsakaTest.view.Entry',{
+            record:rec
+        })
+    },
+    loadRecordForm: function(win){
         var record = win.getRecord();
         win.down('#entryform').loadRecord(record);
     }

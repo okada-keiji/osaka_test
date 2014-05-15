@@ -4,13 +4,6 @@ Ext.define('OsakaTest.view.Grid',{
     alias:'widget.osakatest-grid',
     title:'名簿',
     store:'Employees',
-    listeners:{
-        'itemdblclick':function(view,rec){
-            Ext.create('OsakaTest.view.Entry',{
-                record:rec
-            })
-        }
-    },
     columns:[
         {text:'ID',dataIndex:'id'},
         {text:'名前',dataIndex:'name',flex:1},
@@ -23,7 +16,6 @@ Ext.define('OsakaTest.view.Grid',{
             renderer:function(value){
                 var store = Ext.getStore('Genderes'),
                     rec = store.findRecord('genderid', value, 0,false,false, true);
-
                 return rec.get('jpgender');
             }
         },
