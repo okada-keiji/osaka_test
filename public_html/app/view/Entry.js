@@ -17,10 +17,10 @@ Ext.define('OsakaTest.view.Entry',{
             anchor:'100%'
         },
         items:[{
-            xtype:'textfield',
+            xtype:'displayfield',
             fieldLabel:'ID',
             name:'id',
-            hidden:true
+            submitValue:true
         },{
             xtype:'textfield',
             fieldLabel:'名前',
