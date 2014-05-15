@@ -1,6 +1,5 @@
 Ext.define('OsakaTest.controller.Grid', {
     extend: 'Ext.app.Controller',
-
     refs: [
         {ref: 'grid', selector: 'osakatest-grid'},
         {ref: 'entry', selector: 'osakatest-entry-window'}
@@ -15,10 +14,10 @@ Ext.define('OsakaTest.controller.Grid', {
                 'addemployee': me.onAddEmployee
             },
             'osakatest-entry-window':{
-                'beforerender':me.onLoadRecordForm,
                 'deleteemployee':me.onDeleteEmployee,
                 'editemployee':me.onEditEmployee,
-                'canceleditemployee':me.onCancelEditEmployee
+                'canceleditemployee':me.onCancelEditEmployee,
+                'modechange':me.onModeChange
             }
         });
     },
@@ -73,5 +72,13 @@ Ext.define('OsakaTest.controller.Grid', {
     },
     onCancelEditEmployee:function(win){
         win.close();
-    }
+    },
+    onModeChange:function(win){
+        var me = this;
+        if(win.getRecord() === null){
+
+        }else{
+            me.onLoadRecordForm(win);
+        }
+    },
 });

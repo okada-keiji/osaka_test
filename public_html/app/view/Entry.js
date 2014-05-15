@@ -1,16 +1,22 @@
 Ext.define('OsakaTest.view.Entry',{
     extend:'Ext.window.Window',
     alias:'widget.osakatest-entry-window',
+    config:{record:null},
+    initComponent:function(){
+        var me = this;
+        me.callParent();
+        me.fireEvent('modechange',me);
+    },
     title:'レコードの編集',
     autoShow:true,
     width:400,
     height:330,
     modal:true,
     layout:'fit',
-    config:{record:null},
     items:[{
         xtype:'form',
         itemId:'entryform',
+
         defaults:{
             margin:10,
             allowBrank:false,
@@ -89,4 +95,3 @@ Ext.define('OsakaTest.view.Entry',{
         }]
     }]
 });
-
