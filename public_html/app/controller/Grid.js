@@ -22,17 +22,13 @@ Ext.define('OsakaTest.controller.Grid', {
         });
     },
 
-    onAddEmployee: function(button) {
-        Ext.create('OsakaTest.view.AddEntry');
+    onAddEmployee: function() {
+        Ext.create('OsakaTest.view.Entry');
     },
     onCreateWindow:function(view,rec){
         Ext.create('OsakaTest.view.Entry',{
             record:rec
         })
-    },
-    onLoadRecordForm: function(win){
-        var record = win.getRecord();
-        win.down('#entryform').loadRecord(record);
     },
     onDeleteEmployee: function(win){
         var form = win.down('#entryform');
@@ -76,9 +72,19 @@ Ext.define('OsakaTest.controller.Grid', {
     onModeChange:function(win){
         var me = this;
         if(win.getRecord() === null){
-
+            me.onAddRecordForm(win);
         }else{
             me.onLoadRecordForm(win);
         }
     },
+    onLoadRecordForm: function(win){
+        var record = win.getRecord();
+        win.down('#entryform').loadRecord(record);
+    },
+    onAddRecordForm:function(win){
+        win.setTitle('レコードの追加');
+        win.down('displayfield#idfield').setHiddenState(true);
+        win.down('button#delete').setHiddenState(true);
+        win.down('button#edit').setText('追加');
+    }
 });

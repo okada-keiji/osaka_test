@@ -24,6 +24,7 @@ Ext.define('OsakaTest.view.Entry',{
         },
         items:[{
             xtype:'displayfield',
+            itemId:'idfield',
             fieldLabel:'ID',
             name:'id',
             submitValue:true
@@ -74,12 +75,14 @@ Ext.define('OsakaTest.view.Entry',{
         }],
         buttons:[{
             text:'削除',
+            itemId:'delete',
             handler:function(button){
                 var win = button.up('osakatest-entry-window');
                 win.fireEvent('deleteemployee',win);
             }
         },'->',{
             text:'保存',
+            itemId:'edit',
             formBind:true,
             disabled:true,
             handler:function(button){
