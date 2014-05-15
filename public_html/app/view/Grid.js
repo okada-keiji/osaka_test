@@ -25,7 +25,11 @@ Ext.define('OsakaTest.view.Grid',{
     ],
     tbar:[{
         text:'追加',
-        itemId: 'addButton'
+        itemId: 'addButton',
+        handler:function(button){
+            var grid = button.up('osakatest-grid');
+            grid.fireEvent('addemployee',button);
+        }
     }],
     bbar: [{
         xtype: 'pagingtoolbar',

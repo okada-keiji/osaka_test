@@ -10,14 +10,12 @@ Ext.define('OsakaTest.controller.Grid', {
         var me = this;
 
         me.control({
-            'osakatest-grid button#addButton': {
-                'click': me.onAddButton
-            },
             'osakatest-grid':{
-                'itemdblclick': me.createWindow
+                'itemdblclick': me.onCreateWindow,
+                'addemployee': me.onAddEmployee
             },
             'osakatest-entry-window':{
-                'beforerender':me.loadRecordForm,
+                'beforerender':me.onLoadRecordForm,
                 'deleteemployee':me.onDeleteEmployee,
                 'editemployee':me.onEditEmployee,
                 'canceleditemployee':me.onCancelEditEmployee
@@ -25,20 +23,19 @@ Ext.define('OsakaTest.controller.Grid', {
         });
     },
 
-    onAddButton: function(button) {
-        Ext.create('OsakaText.view.AddEntry');
+    onAddEmployee: function(button) {
+        Ext.create('OsakaTest.view.AddEntry');
     },
-    createWindow:function(view,rec){
+    onCreateWindow:function(view,rec){
         Ext.create('OsakaTest.view.Entry',{
             record:rec
         })
     },
-    loadRecordForm: function(win){
+    onLoadRecordForm: function(win){
         var record = win.getRecord();
         win.down('#entryform').loadRecord(record);
     },
     onDeleteEmployee: function(win){
-        var form = win.down('#entryform');
         Ext.Msg.confirm('削除確認','このレコードを削除してもよろしいですか？',function(res,text){
             if(res === 'yes'){
                 form.updateRecord();
