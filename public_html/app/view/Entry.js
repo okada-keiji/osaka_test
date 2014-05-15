@@ -68,49 +68,23 @@ Ext.define('OsakaTest.view.Entry',{
         }],
         buttons:[{
             text:'削除',
-            itemId:'delete',
             handler:function(button){
-                Ext.Msg.confirm('削除確認','このレコードを削除してもよろしいですか？',function(res,text){
-                    if(res === 'yes'){
-                        var form = button.up('window').down('form').getForm();
-                        form.updateRecord();
-                        form.submit({
-                            url:'./php/delete_user.php',
-                            success:function(form,action){
-                                button.up('window').close();
-                            },
-                            failure:function(form,action){
-                                console.log('削除に失敗しました。');
-                                button.up('window').close();
-                            }
-                        });
-
-                    }
-                });
+                var win = button.up('osakatest-entry-window');
+                win.fireEvent('deleteemployee',win);
             }
         },'->',{
             text:'保存',
             formBind:true,
             disabled:true,
             handler:function(button){
-                var form = button.up('window').down('form').getForm();
-                form.updateRecord();
-                form.submit({
-                    url:'./php/update_user.php',
-                    success:function(form,action){
-                        button.up('window').close();
-                    },
-                    failure:function(form,action){
-                        console.log('更新に失敗しました。');
-                        button.up('window').close();
-                    }
-                });
+                var win = button.up('osakatest-entry-window');
+                win.fireEvent('editemployee',win);
             }
         },{
             text:'キャンセル',
             handler:function(button){
-                var win = button.up('window');
-                win.close();
+                var win = button.up('osakatest-entry-window');
+                win.fireEvent('canceleditemployee',win);
             }
         }]
     }]
