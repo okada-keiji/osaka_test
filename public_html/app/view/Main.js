@@ -10,6 +10,7 @@ Ext.define('OsakaTest.view.Main', {
     },
 
     items: [{
+        // ケツカンマ
         xtype: 'osakatest-grid',
     }]
 });

@@ -27,6 +27,7 @@ Ext.define('OsakaTest.view.Grid',{
         text:'追加',
         itemId: 'addButton',
         handler:function(button){
+            // initComponentの中ならme.fireEvent()が使える
             var grid = button.up('osakatest-grid');
             grid.fireEvent('addemployee',button);
         }

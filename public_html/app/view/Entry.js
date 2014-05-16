@@ -13,6 +13,10 @@ Ext.define('OsakaTest.view.Entry',{
     height:330,
     modal:true,
     layout:'fit',
+
+    // {{{ initComponentでwindowに追加するようにすれば、
+    // ボタンのvisibleの切り替えとかもできる
+
     items:[{
         xtype:'form',
         itemId:'entryform',
@@ -77,6 +81,7 @@ Ext.define('OsakaTest.view.Entry',{
             text:'削除',
             itemId:'delete',
             handler:function(button){
+                // initComponent内であれば me.fireEvent() が使える
                 var win = button.up('osakatest-entry-window');
                 win.fireEvent('deleteemployee',win);
             }
@@ -86,15 +91,19 @@ Ext.define('OsakaTest.view.Entry',{
             formBind:true,
             disabled:true,
             handler:function(button){
+                // initComponent内であれば me.fireEvent() が使える
                 var win = button.up('osakatest-entry-window');
                 win.fireEvent('editemployee',win);
             }
         },{
             text:'キャンセル',
             handler:function(button){
+                // initComponent内であれば me.fireEvent() が使える
                 var win = button.up('osakatest-entry-window');
                 win.fireEvent('canceleditemployee',win);
             }
         }]
     }]
+
+    // }}}
 });

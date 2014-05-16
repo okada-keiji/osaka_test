@@ -1,5 +1,6 @@
 Ext.define('OsakaTest.controller.Grid', {
     extend: 'Ext.app.Controller',
+    // refs使ってない、余分な参照
     refs: [
         {ref: 'grid', selector: 'osakatest-grid'},
         {ref: 'entry', selector: 'osakatest-entry-window'}
@@ -26,6 +27,7 @@ Ext.define('OsakaTest.controller.Grid', {
         Ext.create('OsakaTest.view.Entry');
     },
     onCreateWindow:function(view,rec){
+        // セミコロン抜け
         Ext.create('OsakaTest.view.Entry',{
             record:rec
         })
@@ -52,6 +54,8 @@ Ext.define('OsakaTest.controller.Grid', {
     },
     onEditEmployee: function(win){
         var form = win.down('#entryform');
+
+        // {{{ もっと共通化できる、submitの中の違いはurlとlogの文面だけ
         if(win.getRecord()===null){
             form.submit({
                 url:'./php/create_user.php',
@@ -61,6 +65,7 @@ Ext.define('OsakaTest.controller.Grid', {
                 },
                 failure:function(form,action){
                     console.log('追加に失敗しました。');
+                    // エラーのときにもwindow閉じていいの？入力内容消えてしまうけども
                     win.close();
                 }
             });
@@ -75,18 +80,22 @@ Ext.define('OsakaTest.controller.Grid', {
                 },
                 failure:function(form,action){
                     console.log('更新に失敗しました。');
+                    // エラーのときにもwindow閉じていいの？入力内容消えてしまうけども
                     win.close();
                 }
             });
         }
-
+        // }}}
 
     },
     onCancelEditEmployee:function(win){
         win.close();
     },
+    // {{{ initComponentの中でやれば、この関数はいらなくなる
+
     onModeChange:function(win){
         var me = this;
+
         if(win.getRecord() === null){
             me.onAddRecordForm(win);
         }else{
@@ -103,4 +112,7 @@ Ext.define('OsakaTest.controller.Grid', {
         win.down('button#delete').setHiddenState(true);
         win.down('button#edit').setText('追加');
     }
+
+    // }}}
+
 });
